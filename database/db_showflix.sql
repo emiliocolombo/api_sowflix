@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 08:32 PM
+-- Generation Time: Nov 04, 2022 at 03:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `generos`
+--
+
+CREATE TABLE `generos` (
+  `atp` tinyint(1) NOT NULL,
+  `genero` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `generos`
+--
+
+INSERT INTO `generos` (`atp`, `genero`) VALUES
+(1, 'ciencia ficcion'),
+(1, 'comedia'),
+(1, 'infantil'),
+(0, 'nacional'),
+(0, 'terror');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `peliculas`
 --
 
@@ -33,7 +55,7 @@ CREATE TABLE `peliculas` (
   `imagen` varchar(100) NOT NULL,
   `duracion` time NOT NULL,
   `director` varchar(100) NOT NULL,
-  `genero` varchar(100) NOT NULL,
+  `genero` varchar(50) NOT NULL,
   `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,11 +84,9 @@ INSERT INTO `peliculas` (`id`, `nombre_pelicula`, `imagen`, `duracion`, `directo
 (19, 'zombieland', 'img/zombieland.png', '01:35:53', 'Ruben Fleischer', 'comedia', 'En un mundo plagado de zombis, Columbus es un joven que vive aterrorizado. Sin embargo, precisamente el miedo y la cobardía le han permitido sobrevivir. Un día conoce a Tallahassse, un gamberro cazazombies cuyo único deseo en la vida es lograr el último Twinkie de la Tierra.'),
 (20, 'scary movie', 'img/scary_movie.png', '01:56:30', 'Keenen Ivory Wayans', 'comedia', 'En esta parodia de las películas de terror modernas, un año después de atropellar a un hombre y deshacerse del cadáver, un grupo de adolescentes es acechado por un asesino en serie bastante inútil.'),
 (21, 'scary movie 2', 'img/scary_movie2.png', '01:35:53', 'Keenen Ivory Wayans', 'comedia', 'Un profesor loco recluta a una chica y a un grupo de jóvenes, todos ellos deseosos de vivir aventuras y nuevas experiencias, para una salida de fin de semana. Una vez allí todos se instalan, con el pretexto de realizar un experimento científico sobreT desórdenes del sueño, en una caso que resulta estar embrujada, lo cual es adecuado para el propósito real del profesor.'),
-(22, 'harry potter y la piedra filosofal', 'img/harry_potter1.png', '02:26:35', 'Chris Columbus', 'cienciaficcion', 'El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Howards.'),
-(23, 'Harry Potter y la cámara secreta', 'img/harry_potter2.png', '02:35:53', 'Chris Columbus', 'cienciaficcion', 'Terminado el verano, Harry no ve la hora de abandonar la casa de sus odiosos tíos. Inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts.'),
-(24, 'jurassic park', 'img/jurassic_park.png', '02:00:00', 'Steven Spielberg', 'cienciaficcion', 'El multimillonario John Hammond hace realidad su sueño de clonar dinosaurios del Jurásico y crear con ellos un parque temático en una isla. Antes de abrir el parque al público general, Hammond invita a una pareja de científicos y a un matemático para que comprueben la viabilidad del proyecto. Sin embargo, el sistema de seguridad falla y los dinosaurios se escapan.'),
-(25, 'jurassic park 2', 'img/jurassic_park2.png', '01:35:53', 'Steven Spielberg', 'cienciaficcion', 'El creador del primer Parque Jurásico vuelve a contactar con el físico experto en teoría del caos Ian Malcolm. Le encarga que supervise la posibilidad de un segundo parque con nuevos dinosaurios.'),
-(26, 'venom', 'img/venom.png', '01:42:03', '\r\nRuben Fleischer', 'cienciaficcion', 'El periodista Eddie Brock intenta desenmascarar al genio científico Carlton Drake, el célebre fundador de la Fundación Vida. Mientras investiga uno de los experimentos de Drake, Brock establece una simbiosis con un ente alienígena que le ofrece superpoderes, pero el ser se apodera de su personalidad y lo vuelve perverso.\r\n');
+(22, 'harry potter y la piedra filosofal', 'img/harry_potter1.png', '02:26:35', 'Chris Columbus', 'ciencia ficcion', 'El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Howards.'),
+(23, 'Harry Potter y la cámara secreta', 'img/harry_potter2.png', '02:35:53', 'Chris Columbus', 'ciencia ficcion', 'Terminado el verano, Harry no ve la hora de abandonar la casa de sus odiosos tíos. Inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts.'),
+(24, 'jurassic park', 'img/jurassic_park.png', '02:00:00', 'Steven Spielberg', 'ciencia ficcion', 'El multimillonario John Hammond hace realidad su sueño de clonar dinosaurios del Jurásico y crear con ellos un parque temático en una isla. Antes de abrir el parque al público general, Hammond invita a una pareja de científicos y a un matemático para que comprueben la viabilidad del proyecto. Sin embargo, el sistema de seguridad falla y los dinosaurios se escapan.');
 
 -- --------------------------------------------------------
 
@@ -85,10 +105,10 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`cant_copias`, `precio_usd`, `id_pelicula`) VALUES
-(2, 6, 1),
+(1, 6, 1),
 (0, 5, 2),
 (0, 9, 3),
-(2, 7, 4),
+(1, 7, 4),
 (0, 6, 5),
 (1, 4, 6),
 (7, 3, 7),
@@ -107,9 +127,7 @@ INSERT INTO `stock` (`cant_copias`, `precio_usd`, `id_pelicula`) VALUES
 (1, 4, 21),
 (3, 9, 22),
 (4, 6, 23),
-(1, 8, 24),
-(7, 3, 25),
-(6, 4, 26);
+(1, 8, 24);
 
 -- --------------------------------------------------------
 
@@ -153,25 +171,25 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id_pelicula`, `precio_vendido`, `id_usuario`, `id_transaccion`) VALUES
-(1, 6, 2, 12),
-(1, 6, 2, 23),
-(4, 7, 2, 24),
-(2, 5, 2, 25),
-(2, 5, 2, 26),
-(5, 6, 2, 27),
-(26, 4, 2, 28),
-(1, 6, 2, 29),
-(5, 6, 2, 30);
+(1, 6, 2, 34),
+(4, 7, 2, 35);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `generos`
+--
+ALTER TABLE `generos`
+  ADD PRIMARY KEY (`genero`);
+
+--
 -- Indexes for table `peliculas`
 --
 ALTER TABLE `peliculas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_genero` (`genero`);
 
 --
 -- Indexes for table `stock`
@@ -201,7 +219,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -213,11 +231,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_transaccion` smallint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_transaccion` smallint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `peliculas`
+--
+ALTER TABLE `peliculas`
+  ADD CONSTRAINT `fk_genero` FOREIGN KEY (`genero`) REFERENCES `generos` (`genero`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `stock`

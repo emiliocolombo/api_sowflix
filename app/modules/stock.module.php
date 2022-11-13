@@ -32,7 +32,6 @@
         }
     
         function delete($idMovie){
-            echo $idMovie;
             $query = $this->db->prepare('DELETE FROM stock WHERE id_pelicula = ?');
             $query->execute([$idMovie]);
         }
